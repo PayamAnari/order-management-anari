@@ -14,8 +14,8 @@ Voor meer details over de opdracht en de vereisten, bekijk de [assessment.md](./
 ## Installatie en starten
 1. Clone deze repository:
    ```bash
-   git clone https://github.com/jouw-gebruikersnaam/order-management-demo.git
-   cd order-management-demo
+   git clone https://github.com/jouw-gebruikersnaam/order-management-anari.git
+   cd order-management-anari
    ```
 
 2. Installeer de dependencies voor zowel de frontend als de backend:

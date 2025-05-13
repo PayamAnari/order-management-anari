@@ -35,6 +35,8 @@ export const createOrder = (req, res, next) => {
       product,
       quantity: parseInt(quantity),
       price: parseFloat(price),
+      status: status || 'New',
+      orderDate: orderDate || new Date().toISOString().split('T')[0]
     };
 
     orders.push(newOrder);

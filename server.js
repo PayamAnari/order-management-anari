@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import { errorHandler } from './utils/error.js';
+import authRoutes from './routes/auth.route.js';
 
 
 dotenv.config();
@@ -13,6 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+app.use('/auth', authRoutes);
 
 app.use((req, res, next) => {
     next(errorHandler(404, 'Route not found'));

@@ -32,7 +32,7 @@ Bouw een kleine maar functionele fullstack applicatie bestaande uit:
 ## Structuur en repository
 Gebruik **één mono-repository** voor het project:
 
-**Naam:** `order-management-demo`  
+**Naam:** `order-management-anari`  
 **Structuur:**
 ```
 /client  → Angular frontend

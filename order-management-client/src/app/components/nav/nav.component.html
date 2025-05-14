@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="container">
+    <a href="/orders" class="brand">
+      <span class="brand-icon">📊</span>
+      Order Management
+    </a>
+    <div class="auth-links">
+      <div *ngIf="isAuthenticated$ | async; else notAuthenticated" class="authenticated-user">
+        <span *ngIf="user$ | async as user" class="welcome-message">Welcome, {{ user.username }}</span>
+        <button (click)="signout()" class="btn-signout">Sign Out</button>
+      </div>
+      <ng-template #notAuthenticated>
+        <a href="/signin" class="btn btn-signin">Sign In</a>
+        <a href="/signup" class="btn btn-signup">Sign Up</a>
+      </ng-template>
+    </div>
+  </div>
+</nav>

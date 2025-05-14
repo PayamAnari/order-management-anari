@@ -24,8 +24,8 @@ export const getOrderById = (req, res, next) => {
 
 export const createOrder = (req, res, next) => {
   try {
-    const { customerName, product, quantity, price } = req.body;
-    if (!customerName || !product || !quantity || !price) {
+    const { customerName, product, quantity, price, status, orderDate } = req.body;
+    if (!customerName || !product || !quantity || !price ) {
       return next(errorHandler(400, 'Missing required fields'));
     }
 

@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import { errorHandler } from './utils/error.js';
 import authRoutes from './routes/auth.route.js';
 import ordersRoutes from './routes/orders.route.js';
+import cors from 'cors';
 
 
 dotenv.config();

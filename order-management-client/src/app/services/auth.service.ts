@@ -33,7 +33,6 @@ export class AuthService {
   }
 
   signin(credentials: any): Observable<any> {
-    console.log('Signing in with credentials:', credentials);
 
     return this.http.post(`${this.apiUrl}/signin`, credentials, { withCredentials: true }).pipe(
       tap((response: any) => {
@@ -55,7 +54,6 @@ export class AuthService {
 
     return this.http.post(`${this.apiUrl}/signout`, {}, { withCredentials: true }).pipe(
       tap(() => {
-        console.log('Sign-out successful');
         this.clearAuth();
       }),
       catchError(error => {
@@ -68,7 +66,6 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const isAuth = this.hasValidToken();
-    console.log('Checking auth state:', isAuth);
     return isAuth;
   }
 
@@ -89,7 +86,6 @@ export class AuthService {
   }
 
   private handleAuthSuccess(response: any): void {
-    console.log('Handling auth success, token:', response.token);
 
     localStorage.setItem('access_token', response.token);
 

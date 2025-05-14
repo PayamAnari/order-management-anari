@@ -35,7 +35,6 @@ export class OrderService {
 
   createOrder(order: Order): Observable<Order> {
     const token = localStorage.getItem('access_token');
-    console.log('Creating order with token:', token);
     if (!token) {
       this.router.navigate(['/signin']);
       return throwError(() => new Error('No token available'));

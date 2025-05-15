@@ -224,39 +224,6 @@
   gap: 1.2rem;
 }
 
-.detail-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 0;
-}
-
-.detail-label {
-  color: #64748b;
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.detail-value {
-  color: #1e293b;
-  font-weight: 500;
-  padding: 0.7rem;
-  background: #f8fafc;
-  border-radius: 6px;
-}
-
-.total-price {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #f1f5f9;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 600;
-  color: #1e293b;
-  border: 1px solid #e2e8f0;
-}
-
 .modal-actions {
   padding: 1.5rem;
   border-top: 1px solid #e2e8f0;
@@ -264,6 +231,27 @@
   justify-content: flex-end;
   gap: 1rem;
 }
+
+.modal-subtitle {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+}
+
+.order-items-table th,
+.order-items-table td {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+}
+
 
 .status-badge {
   font-weight: bold;

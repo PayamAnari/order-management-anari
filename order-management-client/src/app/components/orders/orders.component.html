@@ -28,7 +28,6 @@
     {{ message }}
   </div>
 
-  <!-- Existing grid, buttons, and form stay the same -->
 
 <!-- Modal -->
 <div class="modal-backdrop" *ngIf="isModalVisible" (click)="closeModal()">
@@ -43,49 +42,40 @@
     </div>
 
     <div class="modal-content">
+      <h2 class="modal-title">Order Detail of {{ selectedOrder?.customerName }}</h2>
+
+      <div class="detail-row"><strong>Customer:</strong> {{ selectedOrder?.customerName }}</div>
+      <div class="detail-row"><strong>Date:</strong> {{ selectedOrder?.orderDate }}</div>
+      <div class="detail-row "><strong>Status:</strong>
+        <span class="status-badge status-{{ (selectedOrder?.status ?? 'unknown').toLowerCase() }}">
+        {{ selectedOrder?.status }}
+      </span></div>
       <div class="detail-row">
-        <span class="detail-label">Customer:</span>
-        <span class="detail-value">{{ selectedOrder?.customerName }}</span>
+        <strong>Total Amount:</strong>
+        {{ selectedOrderTotal | currency }}
       </div>
 
-      <div class="detail-row">
-        <span class="detail-label">Status:</span>
-        <span class="detail-value">
-          <span class="status-badge status-{{ (selectedOrder?.status ?? 'unknown').toLowerCase() }}">
-            {{ selectedOrder?.status }}
-          </span>
-        </span>
-      </div>
-
-      <div class="detail-row">
-        <span class="detail-label">Order Date:</span>
-        <span class="detail-value">{{ selectedOrder?.orderDate }}</span>
-      </div>
-
-      <div class="detail-row">
-        <span class="detail-label">Product:</span>
-        <span class="detail-value">{{ selectedOrder?.product }}</span>
-      </div>
-
-      <div class="detail-row">
-        <span class="detail-label">Quantity:</span>
-        <span class="detail-value">{{ selectedOrder?.quantity }}</span>
-      </div>
-
-      <div class="detail-row">
-        <span class="detail-label">Price:</span>
-        <span class="detail-value">{{ selectedOrder?.price | currency }}</span>
-      </div>
-
-      <div class="total-price">
-        Total: {{ (selectedOrder?.quantity ?? 0) * (selectedOrder?.price ?? 0) | currency }}
-      </div>
+      <h3 class="modal-subtitle">Order Items</h3>
+      <table class="order-items-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ selectedOrder?.product }}</td>
+            <td>{{ selectedOrder?.quantity }}</td>
+            <td>{{ selectedOrder?.price | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="modal-actions">
-      <button (click)="closeModal()" class="button-blue">
-        Close
-      </button>
+      <button (click)="closeModal()" class="button-blue">Cancel</button>
     </div>
   </div>
 </div>

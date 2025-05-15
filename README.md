@@ -20,7 +20,7 @@
   <img 
     width="1200"
     alt="home"
-    src="https://live.staticflickr.com/65535/54518776962_b608de9729_z.jpg"/>
+    src="https://live.staticflickr.com/65535/54521123195_426cd83428_c.jpg"/>
 </p>
 
 ---
@@ -75,7 +75,7 @@ POST /orders: (Optioneel) Maak een nieuwe order aan
 ```
 POST /auth/signup: Maak een nieuwe gebruiker aan
 
-POSt /auth/signin: Verleen toegang door in te loggen met gebruikersgegevens
+POST /auth/signin: Verleen toegang door in te loggen met gebruikersgegevens
 
 ```
 
@@ -85,7 +85,7 @@ POSt /auth/signin: Verleen toegang door in te loggen met gebruikersgegevens
   <img 
     width="1200"
     alt="home"
-    src="https://live.staticflickr.com/65535/54518776977_abde91082d.jpg"/>
+    src="https://live.staticflickr.com/65535/54520958119_df4d243e10_c.jpg"/>
 </p>
 
 ## Technologies Used

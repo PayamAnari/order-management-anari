@@ -153,7 +153,17 @@ npm install
 
 ```
 
+
+
 ### De Applicatie Draaien
+
+- **Stel de Omgevingsvariabelen In:**
+
+```
+JWT_SECRET=mySuperSecretKey1234
+PORT=3000
+
+```
 
 - **Start de backend server:**
 

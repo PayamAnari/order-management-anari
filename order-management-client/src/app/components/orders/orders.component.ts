@@ -7,7 +7,8 @@ import {
   GridReadyEvent,
   ModuleRegistry,
   AllCommunityModule,
-  CellClickedEvent
+  CellClickedEvent,
+  ICellRendererParams,
 } from 'ag-grid-community';
 import { SideBarModule, CellSelectionModule, ColumnsToolPanelModule, AllEnterpriseModule
 } from 'ag-grid-enterprise';
@@ -47,7 +48,16 @@ export class OrdersComponent implements OnInit, OnDestroy {
     { field: 'id', headerName: 'Order ID', sortable: true, filter: true },
     { field: 'customerName', headerName: 'Customer', sortable: true, filter: true },
     { field: 'orderDate', headerName: 'Order Date', sortable: true, filter: true },
-    { field: 'status', headerName: 'Status', sortable: true, filter: true },
+    {
+      field: 'status',
+      headerName: 'Status',
+      sortable: true,
+      filter: true,
+      cellClass: (params) => `status-badge status-${(params.value ?? 'unknown').toLowerCase()}`,
+      cellRenderer: (params: ICellRendererParams) => params.value
+    },
+
+
     {
       field: 'totalAmount',
       headerName: 'Total Amount',

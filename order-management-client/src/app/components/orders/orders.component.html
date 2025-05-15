@@ -50,7 +50,11 @@
 
       <div class="detail-row">
         <span class="detail-label">Status:</span>
-        <span class="detail-value">{{ selectedOrder?.status }}</span>
+        <span class="detail-value">
+          <span class="status-badge status-{{ (selectedOrder?.status ?? 'unknown').toLowerCase() }}">
+            {{ selectedOrder?.status }}
+          </span>
+        </span>
       </div>
 
       <div class="detail-row">

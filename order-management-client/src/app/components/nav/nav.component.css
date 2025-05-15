@@ -24,7 +24,7 @@ body {
 .navbar {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(139, 136, 136, 0.4);
   box-shadow: var(--shadow);
   position: sticky;
   top: 0;
@@ -38,7 +38,7 @@ body {
   height: 80px;
 }
 
-.brand {
+.brand  {
   font-size: 1.6rem;
   font-weight: 700;
   text-decoration: none;
@@ -226,9 +226,6 @@ body {
     border-bottom-color: rgba(30, 41, 59, 0.9);
   }
 
-  .brand {
-    color: #f8fafc;
-  }
 
   .welcome-message {
     color: #94a3b8;

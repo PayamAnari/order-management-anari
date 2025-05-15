@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+.status-badge {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  text-transform: capitalize;
+  display: inline-block;
+  font-size: 0.750rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.status-new {
+  color: #f45555;
+}
+
+.status-processing {
+  color: #3b73ea;
+}
+
+.status-delivered {
+  color: #23b116;
+}
+
+.status-shipped {
+  color: #f19840;
+}
+
+.status-unknown {
+  color: #6b7280;
+}

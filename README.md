@@ -50,7 +50,7 @@ De applicatie bevat ook gebruikersbeheer functionaliteit, waarmee gebruikers zic
 - **Eenvoudige REST API voor ordergegevensbeheer**
 
 <p align="center">
-  <img width="600" src="https://live.staticflickr.com/65535/54519912317_b5fe387a24.jpg" alt="Image 1">
+  <img width="600" src="https://live.staticflickr.com/65535/54521072818_c59ec5bb85.jpg" alt="Image 1">
   
   
 </p>

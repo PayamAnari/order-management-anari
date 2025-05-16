@@ -141,6 +141,7 @@ git clone https://github.com/jouw-gebruikersnaam/order-management-anari.git
 
 ```
 cd client
+cd order-management-client
 npm install
 
 ```

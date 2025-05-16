@@ -1,0 +1,26 @@
+<div class="signin-container">
+  <h1 class="signin-title">Sign In</h1>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="signin-form">
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" formControlName="email" type="email" class="form-input" />
+      <div *ngIf="signinForm.get('email')?.invalid && signinForm.get('email')?.touched" class="error-message">
+        Valid email is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input id="password" formControlName="password" type="password" class="form-input" />
+      <div *ngIf="signinForm.get('password')?.invalid && signinForm.get('password')?.touched" class="error-message">
+        Password is required
+      </div>
+    </div>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+    <button type="submit" [disabled]="signinForm.invalid" class="signin-button">
+      Sign In
+    </button>
+  </form>
+  <p class="signup-prompt">
+    Don't have an account? <a routerLink="/signup" class="signup-link">Sign Up</a>
+  </p>
+</div>

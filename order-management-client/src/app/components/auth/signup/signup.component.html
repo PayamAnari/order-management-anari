@@ -1,0 +1,40 @@
+<div class="signup-container">
+  <h1 class="signup-title">Sign Up</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input id="username" formControlName="username" type="text" class="form-input" placeholder="Enter your name" />
+<div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="error-message">
+  Name is required
+</div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" formControlName="email" type="email" class="form-input" placeholder="Enter your email" />
+      <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="error-message">
+        Valid email is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input id="password" formControlName="password" type="password" class="form-input" placeholder="Enter your password" />
+      <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="error-message">
+        Password is required
+      </div>
+    </div>
+
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+
+    <button type="submit" [disabled]="signupForm.invalid" class="signup-button">
+      Sign Up
+    </button>
+  </form>
+
+  <p class="signin-prompt">
+    Already have an account?
+    <a routerLink="/signin" class="signin-link">Sign In</a>
+  </p>
+</div>

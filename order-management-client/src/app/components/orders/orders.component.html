@@ -1,0 +1,133 @@
+<div class="container">
+  <h1 class="heading">Orders Management</h1>
+
+  <div class="button-container">
+    <button (click)="toggleForm()" class="button-blue">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      {{ isFormVisible ? 'Hide Form' : 'Create Order' }}
+    </button>
+
+    <button
+      (click)="exportToCsv()"
+      class="button-green"
+      [disabled]="isLoading || !gridApi || rowData.length === 0">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v12m0 0l-4-4m4 4l4-4m-8 8h8" />
+      </svg>
+      Export to CSV
+    </button>
+  </div>
+
+  <div *ngIf="!isLoading && rowData.length === 0" class="no-data-message">
+    No orders available. Create a new order to get started.
+  </div>
+
+  <div *ngIf="message" class="message">
+    {{ message }}
+  </div>
+
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="isModalVisible" (click)="closeModal()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title">Order Details</h3>
+      <button class="modal-close" (click)="closeModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal-content">
+      <h2 class="modal-title">Order Detail of {{ selectedOrder?.customerName }}</h2>
+
+      <div class="detail-row"><strong>Customer:</strong> {{ selectedOrder?.customerName }}</div>
+      <div class="detail-row"><strong>Date:</strong> {{ selectedOrder?.orderDate }}</div>
+      <div class="detail-row "><strong>Status:</strong>
+        <span class="status-badge status-{{ (selectedOrder?.status ?? 'unknown').toLowerCase() }}">
+        {{ selectedOrder?.status }}
+      </span></div>
+      <div class="detail-row">
+        <strong>Total Amount:</strong>
+        {{ selectedOrderTotal | currency }}
+      </div>
+
+      <h3 class="modal-subtitle">Order Items</h3>
+      <table class="order-items-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ selectedOrder?.product }}</td>
+            <td>{{ selectedOrder?.quantity }}</td>
+            <td>{{ selectedOrder?.price | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-actions">
+      <button (click)="closeModal()" class="button-blue">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+  <form *ngIf="isFormVisible" [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-grid">
+      <div>
+        <label class="form-label">Customer Name</label>
+        <input formControlName="customerName" type="text" class="form-input" />
+      </div>
+      <div>
+        <label class="form-label">Product</label>
+        <input formControlName="product" type="text" class="form-input" />
+      </div>
+      <div>
+        <label class="form-label">Quantity</label>
+        <input formControlName="quantity" type="number" class="form-input" />
+      </div>
+      <div>
+        <label class="form-label">Price</label>
+        <input formControlName="price" type="number" class="form-input" />
+      </div>
+      <div>
+        <label class="form-label">Status</label>
+        <select formControlName="status" class="form-input">
+          <option value="New">New</option>
+          <option value="Processing">Processing</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Delivered">Delivered</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Order Date</label>
+        <input formControlName="orderDate" type="date" class="form-input" />
+      </div>
+    </div>
+    <button type="submit" class="button-blue submit-button">
+      Submit
+    </button>
+  </form>
+
+  <ag-grid-angular
+    (gridReady)="onGridReady($event)"
+    style="width: 100%; height: 500px;"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    [sideBar]="{ toolPanels: ['columns', 'filters'], defaultToolPanel: 'filters' }"
+    [enableRangeSelection]="true">
+
+  </ag-grid-angular>
+</div>

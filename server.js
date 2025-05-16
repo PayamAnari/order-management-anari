@@ -4,11 +4,18 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { errorHandler } from './utils/error.js';
 import authRoutes from './routes/auth.route.js';
+import ordersRoutes from './routes/orders.route.js';
+import cors from 'cors';
 
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true,
+}));
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -16,6 +23,7 @@ app.use(cookieParser());
 
 
 app.use('/auth', authRoutes);
+app.use('/orders', ordersRoutes);
 
 app.use((req, res, next) => {
     next(errorHandler(404, 'Route not found'));
